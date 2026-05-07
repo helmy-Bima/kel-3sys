@@ -1,0 +1,199 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #7f9fb3, #dce6ee);
+}
+
+/* Navbar */
+.navbar {
+  text-align: center;
+  padding: 25px;
+  background: #0d1117;
+  color: white;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: rgba(255,255,255,0.7);
+}
+
+/* Layout */
+.container {
+  padding: 40px 20px;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.bottom {
+  gap: 80px;
+}
+
+/* Card */
+.card {
+  position: relative;
+  width: 180px;
+  padding: 20px;
+  border-radius: 18px;
+  text-align: center;
+  background: rgba(47, 62, 77, 0.85);
+  backdrop-filter: blur(8px);
+  color: white;
+  transition: 0.4s;
+  cursor: pointer;
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  overflow: hidden;
+}
+
+/* Spotlight effect */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(255,255,255,0.15), transparent 60%);
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+/* Hover */
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+/* Image */
+.card img {
+  width: 120px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 2px solid #5fa8ff;
+}
+
+/* Name */
+.card p {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: #1f2a36;
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  color: white;
+  width: 300px;
+  animation: fadeIn 0.3s ease;
+}
+
+.modal-content img {
+  width: 120px;
+  height: 150px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  cursor: pointer;
+}
+
+/* Animasi */
+@keyframes fadeIn {
+  from {opacity: 0; transform: scale(0.9);}
+  to {opacity: 1; transform: scale(1);}
+}
+
+/* ================= BACKGROUND AMBIENT ================= */
+.bg-orb {
+  position: fixed;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  filter: blur(100px);
+  z-index: -1;
+  opacity: 0.4;
+}
+
+.orb1 {
+  background: #5fa8ff;
+  top: 10%;
+  left: 5%;
+  animation: float1 10s ease-in-out infinite;
+}
+
+.orb2 {
+  background: #ffffff;
+  bottom: 10%;
+  right: 5%;
+  animation: float2 12s ease-in-out infinite;
+}
+
+@keyframes float1 {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-30px); }
+}
+
+@keyframes float2 {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(30px); }
+}
+
+/* ================= CARD LIFE EFFECT ================= */
+
+/* glow pulse halus */
+.card {
+  animation: pulse 4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,100% {
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  }
+  50% {
+    box-shadow: 0 12px 30px rgba(95,168,255,0.25);
+  }
+}
+
+/* shine effect (keren tapi subtle) */
+.card::after {
+  content: "";
+  position: absolute;
+  top: -100%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.15), transparent);
+  transform: rotate(25deg);
+  transition: 0.5s;
+}
+
+.card:hover::after {
+  top: 100%;
+}
+
+/* hover lebih smooth */
+.card {
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
